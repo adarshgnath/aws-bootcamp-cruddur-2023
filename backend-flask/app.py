@@ -93,12 +93,10 @@ def rollbar_test():
     return "Hello World!"
 
 rollbar_access_token = os.getenv('ROLLBAR_ACCESS_TOKEN')
-@app.before_first_request
-def init_rollbar():
-    """init rollbar module"""
+with app.app_context():
     rollbar.init(
         # access token
-        rollbar_access_token,
+        'c192e5326fd144adad6d22242739ca6e',
         # environment name
         'production',
         # server root directory, makes tracebacks prettier
